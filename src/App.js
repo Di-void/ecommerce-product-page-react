@@ -1,4 +1,7 @@
 import React from "react";
+import Navbar from "./components/Navbar";
+import Slider from "./components/Slider";
+import Sidebar from "./components/Sidebar";
 import { useGlobalContext } from "./context";
 
 // # MAIN COMP..
@@ -8,7 +11,9 @@ const App = () => {
 	// # RETs
 	return (
 		<main>
-			<h2>Hello from source code</h2>
+			<Navbar />
+			<Slider />
+			{/* <Sidebar /> */}
 		</main>
 	);
 };
