@@ -1,7 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import nextIcon from "../images/icon-next.svg";
-import prevIcon from "../images/icon-previous.svg";
 import styled from "styled-components";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import { Images } from "./pics";
@@ -57,18 +55,20 @@ const Slider = () => {
 
 const Wrapper = styled.section`
 	position: relative;
-	/* border: 1px solid black; */
 	/* width: 100vw; */
-	height: 380px;
+	/* border: 1px solid black; */
+	height: 350px;
 	display: flex;
 	/* overflow: hidden; */
-	/* padding: 0.75rem; */
 
 	div {
 		/* border: 1px solid black; */
+		width: 100%;
+		height: 100%;
+		position: absolute;
 		img {
 			object-fit: cover;
-			width: 100vw;
+			width: 100%;
 			height: 100%;
 		}
 	}

@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { BsCart, BsPlus } from "react-icons/bs";
-import { BiMinus } from "react-icons/bi";
+import { BsCart } from "react-icons/bs";
 import userImage from "../images/image-avatar.png";
 import Logo from "../images/logo.svg";
 
@@ -46,7 +45,7 @@ const Navbar = () => {
 
 const Wrapper = styled.nav`
 	/* border: 1px solid black; */
-	width: 100vw;
+	/* width: 100vw; */
 	padding: 1rem;
 	display: flex;
 	justify-content: space-between;
@@ -78,13 +77,20 @@ const Wrapper = styled.nav`
 	}
 
 	.user-box {
+		/* border: 1px solid black; */
 		width: 20%;
+		max-width: 7rem;
 		display: flex;
 		justify-content: space-between;
 
 		.cart-icon {
+			color: var(--clr-neutral-3);
 			font-size: 25px;
 			cursor: pointer;
+			transition: all 0.2s linear;
+		}
+		.cart-icon:hover {
+			color: black;
 		}
 
 		div {

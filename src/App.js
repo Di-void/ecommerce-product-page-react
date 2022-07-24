@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import Slider from "./components/Slider";
+import Info from "./components/Info";
 import Sidebar from "./components/Sidebar";
 import { useGlobalContext } from "./context";
 
@@ -13,6 +14,7 @@ const App = () => {
 		<main>
 			<Navbar />
 			<Slider />
+			<Info />
 			{/* <Sidebar /> */}
 		</main>
 	);
