@@ -4,12 +4,18 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { BsCart } from "react-icons/bs";
 import userImage from "../images/image-avatar.png";
 import Logo from "../images/logo.svg";
+import { useGlobalContext } from "../context";
 
+// # MAIN COMP..
 const Navbar = () => {
+	// # STATE VALUES
+	const { openSidebar } = useGlobalContext();
+	// # FUNCTIONS AND SIDE EFFECTS
+	// # RETs
 	return (
 		<Wrapper>
 			<div className="logo-box">
-				<FaBars className="bars-icon" />
+				<FaBars className="bars-icon" onClick={openSidebar} />
 				<img src={Logo} alt="Logo" className="logo" />
 			</div>
 			<div className="links-container">

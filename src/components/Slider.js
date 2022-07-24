@@ -56,9 +56,9 @@ const Slider = () => {
 const Wrapper = styled.section`
 	position: relative;
 	/* width: 100vw; */
+	/* display: flex; */
 	/* border: 1px solid black; */
 	height: 350px;
-	display: flex;
 	/* overflow: hidden; */
 
 	div {

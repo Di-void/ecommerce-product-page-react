@@ -15,7 +15,7 @@ const App = () => {
 			<Navbar />
 			<Slider />
 			<Info />
-			{/* <Sidebar /> */}
+			<Sidebar />
 		</main>
 	);
 };
