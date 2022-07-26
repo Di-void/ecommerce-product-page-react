@@ -3,28 +3,52 @@ import styled from "styled-components";
 import { BiPlusMedical } from "react-icons/bi";
 import { ImMinus } from "react-icons/im";
 import { BsCart } from "react-icons/bs";
+import { products } from "../data";
+import { useGlobalContext } from "../context";
 
+// # MAIN COMP..
 const Info = () => {
+	// # STATE VALUES
+	const {
+		itemName: name,
+		itemDesc: desc,
+		originalPrice,
+		discount,
+		discountedPrice,
+	} = products[0];
+	const { amount, ...rest } = useGlobalContext();
+	// # FUNCTIONS AND SIDE EFFECTS
+	// # RETs
 	return (
 		<Wrapper className="section">
 			<div className="section-center">
 				<h3 className="title">sneaker company</h3>
-				<h1 className="prod-title">fall limited edition sneakers</h1>
+				<h1 className="prod-title">{name}</h1>
 
-				<p className="prod-info">
-					These low-profile sneakers are your perfect casual wear
-					companion. Featuring a durable rubber outer sole, they'll
-					withstand everything the weather can offer.
-				</p>
+				<p className="prod-info">{desc}</p>
 
-				<Buttons />
+				<Buttons
+					prodDets={{ originalPrice, discount, discountedPrice }}
+					amount={amount}
+					{...rest}
+					name={name}
+					price={discountedPrice}
+				/>
 			</div>
 		</Wrapper>
 	);
 };
 
 // # MAIN COMP.
-const Buttons = () => {
+const Buttons = ({
+	prodDets: { originalPrice, discount, discountedPrice },
+	amount,
+	decreaseItemAmount,
+	increaseItemAmount,
+	addToCart,
+	name,
+	price,
+}) => {
 	// # STATE VALUES
 	// # FUNCTIONS AND SIDE EFFECTS
 	// # RETs
@@ -33,27 +57,32 @@ const Buttons = () => {
 			<header className="price-section">
 				<div className="nums">
 					<h1>
-						$<span>125.00</span>
+						$<span>{discountedPrice.toFixed(2)}</span>
 					</h1>
-					<h1 className="discount">50%</h1>
+					<h1 className="discount">{discount}%</h1>
 				</div>
 
-				<p>$250.00</p>
+				<p>${originalPrice.toFixed(2)}</p>
 			</header>
 
 			<div className="btns">
-				<button>
+				<button onClick={decreaseItemAmount}>
 					<ImMinus />
 				</button>
 
-				<span>0</span>
+				<span>{amount}</span>
 
-				<button>
+				<button onClick={increaseItemAmount}>
 					<BiPlusMedical />
 				</button>
 			</div>
 
-			<button className="add-to-cart">
+			<button
+				className="add-to-cart"
+				onClick={() => {
+					addToCart(name, price);
+				}}
+			>
 				<BsCart />
 				<span>Add to cart</span>
 			</button>

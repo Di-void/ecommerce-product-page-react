@@ -1,20 +1,80 @@
 import React from "react";
 import { useState, useEffect, useContext, useRef } from "react";
+import { products } from "./data";
 
 const AppContext = React.createContext();
 
 // # MAIN COMP..
 const AppProvider = ({ children }) => {
 	// # STATE VALUES
+	const [items, setItems] = useState(products);
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 	const [isCartOpen, setIsCartOpen] = useState(false);
 	const [cart, setCart] = useState([]);
+	const [totalPrice, setTotalPrice] = useState(0);
+	const { inStock } = items[0];
+	const [itemPrice, setItemPrice] = useState(products[0].discountedPrice);
+	const [amount, setAmount] = useState(0);
 	// # FUNCTIONS AND SIDE EFFECTS
 	const openSidebar = () => {
 		setIsSidebarOpen(true);
 	};
 	const closeSidebar = () => {
 		setIsSidebarOpen(false);
+	};
+
+	const increaseItemAmount = () => {
+		setAmount(oldAmount => {
+			if (oldAmount < inStock) {
+				return oldAmount + 1;
+			}
+			return oldAmount;
+		});
+	};
+	const decreaseItemAmount = () => {
+		setAmount(oldAmount => {
+			let newAmount = oldAmount - 1;
+			if (newAmount > 0) {
+				return newAmount;
+			} else {
+				deleteItemFromCart();
+			}
+		});
+	};
+
+	const calculateTotal = amount => {
+		let ttlPrice = itemPrice * amount;
+		ttlPrice = ttlPrice.toFixed(2);
+		setTotalPrice(ttlPrice);
+	};
+
+	useEffect(() => {
+		calculateTotal(amount);
+	}, [amount]);
+
+	const addToCart = (name, price) => {
+		if (amount > 0) {
+			let total = totalPrice;
+			let newCartItem = {
+				id: 1,
+				name: name,
+				price: price,
+				total,
+			};
+			let isInCart = cart.find(cartItem => cartItem.id === newCartItem.id);
+			if (!isInCart) {
+				cart.push(newCartItem);
+			}
+			setIsCartOpen(true);
+		}
+	};
+
+	const deleteItemFromCart = () => {
+		setCart([]);
+		setAmount(0);
+	};
+	const toggleCart = () => {
+		setIsCartOpen(!isCartOpen);
 	};
 	// #  RETs
 	return (
@@ -24,6 +84,14 @@ const AppProvider = ({ children }) => {
 				openSidebar,
 				closeSidebar,
 				cart,
+				amount,
+				isCartOpen,
+				toggleCart,
+				increaseItemAmount,
+				decreaseItemAmount,
+				addToCart,
+				totalPrice,
+				deleteItemFromCart,
 			}}
 		>
 			{children}

@@ -67,29 +67,6 @@ h3,
 h4 {
 	text-transform: capitalize;
 }
-@media screen and (min-width: 800px) {
-	h1 {
-		font-size: 4rem;
-	}
-	h2 {
-		font-size: 2.5rem;
-	}
-	h3 {
-		font-size: 1.75rem;
-	}
-	h4 {
-		font-size: 1rem;
-	}
-	body {
-		font-size: 1rem;
-	}
-	h1,
-	h2,
-	h3,
-	h4 {
-		line-height: 1;
-	}
-}
 /* global classes */
 .section {
 	padding: 1rem;
@@ -104,6 +81,20 @@ h4 {
 
 /* 
 =========
-SIDEBAR 
+CART
 ========
 */
+.cartActive {
+	opacity: 1;
+	pointer-events: all;
+}
+.cartInActive {
+	opacity: 0;
+	pointer-events: none;
+}
+.cart-icon-active {
+	color: black;
+	font-size: 25px;
+	cursor: pointer;
+	transition: all 0.2s linear;
+}

@@ -9,7 +9,8 @@ import { useGlobalContext } from "../context";
 // # MAIN COMP..
 const Navbar = () => {
 	// # STATE VALUES
-	const { openSidebar } = useGlobalContext();
+	const { openSidebar, amount, cart, toggleCart, isCartOpen } =
+		useGlobalContext();
 	// # FUNCTIONS AND SIDE EFFECTS
 	// # RETs
 	return (
@@ -38,7 +39,17 @@ const Navbar = () => {
 				</ul>
 			</div>
 			<div className="user-box">
-				<BsCart className="cart-icon" />
+				<div className="cart-icon-container" onClick={toggleCart}>
+					{cart.length > 0 && (
+						<div className="quantity-info">
+							<span className="quantity">{amount}</span>
+						</div>
+					)}
+
+					<BsCart
+						className={`${isCartOpen ? "cart-icon-active" : "cart-icon"}`}
+					/>
+				</div>
 				<div className="user-img">
 					<img src={userImage} alt="User" />
 				</div>
@@ -89,14 +100,38 @@ const Wrapper = styled.nav`
 		display: flex;
 		justify-content: space-between;
 
-		.cart-icon {
-			color: var(--clr-neutral-3);
-			font-size: 25px;
-			cursor: pointer;
-			transition: all 0.2s linear;
-		}
-		.cart-icon:hover {
-			color: black;
+		.cart-icon-container {
+			position: relative;
+			width: 30px;
+			/* border: 1px solid black; */
+
+			.quantity-info {
+				position: absolute;
+				right: 0.4px;
+				background-color: var(--clr-primary-1);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding: 0.1rem;
+				width: 17px;
+				height: 14px;
+				border-radius: 50%;
+
+				.quantity {
+					color: var(--clr-primary-3);
+					font-weight: 700;
+					font-size: 0.75rem;
+				}
+			}
+			.cart-icon {
+				color: var(--clr-neutral-3);
+				font-size: 25px;
+				cursor: pointer;
+				transition: all 0.2s linear;
+			}
+			.cart-icon:hover {
+				color: black;
+			}
 		}
 
 		div {
