@@ -47,6 +47,7 @@ const Wrapper = styled.aside`
 		height: 100%;
 		background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75));
 		transition: var(--transition);
+		z-index: 4;
 
 		.sidebar {
 			padding: 1rem;

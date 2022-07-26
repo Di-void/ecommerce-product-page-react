@@ -6,7 +6,9 @@ const AppContext = React.createContext();
 // # MAIN COMP..
 const AppProvider = ({ children }) => {
 	// # STATE VALUES
-	const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+	const [isCartOpen, setIsCartOpen] = useState(false);
+	const [cart, setCart] = useState([]);
 	// # FUNCTIONS AND SIDE EFFECTS
 	const openSidebar = () => {
 		setIsSidebarOpen(true);
@@ -21,6 +23,7 @@ const AppProvider = ({ children }) => {
 				isSidebarOpen,
 				openSidebar,
 				closeSidebar,
+				cart,
 			}}
 		>
 			{children}
