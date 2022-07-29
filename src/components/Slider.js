@@ -4,12 +4,14 @@ import styled from "styled-components";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import { Images } from "./pics";
 import { Thumbs } from "./pics";
+import { useGlobalContext } from "../context";
 
 // # MAIN COMP..
 const Slider = () => {
 	// # STATE VALUES
 	const [shoes, setShoes] = useState(Images);
 	const [index, setIndex] = useState(0);
+	const { openBackdrop } = useGlobalContext();
 	// # FUNCTIONS AND SIDE EFFECTS
 	const nextSlide = () => {
 		setIndex(oldIndex => {
@@ -56,9 +58,10 @@ const Slider = () => {
 					return (
 						<div
 							key={id}
-							data-id={thumbIndex}
 							onClick={() => handleSwitch(thumbIndex)}
 							className={`${thumbIndex === index && "divactive"}`}
+							onDoubleClick={openBackdrop}
+							title="DOUBLE CLICK TO SEE SLIDER"
 						>
 							<img src={image} alt={alt} className="thumb-image" />
 						</div>
@@ -80,12 +83,8 @@ const Slider = () => {
 
 const Wrapper = styled.section`
 	position: relative;
-	/* width: 100vw; */
-	/* display: flex; */
 	/* border: 1px solid black; */
-
 	height: 350px;
-	/* overflow: hidden; */
 
 	.slider-container {
 		width: 100%;
@@ -106,12 +105,6 @@ const Wrapper = styled.section`
 	.thumbnail-container {
 		display: none;
 	}
-	/* .thumb-image {
-		border: 2px solid var(--clr-primary-1);
-		border-radius: 0.4em;
-		width: 60px;
-		height: 60px;
-	} */
 
 	button {
 		background-color: var(--clr-primary-3);
@@ -151,7 +144,6 @@ const Wrapper = styled.section`
 		}
 		.slidepic-container {
 			height: 80%;
-			/* padding: 0.2em; */
 			img {
 				border-radius: 0.5em;
 				object-fit: unset;
@@ -173,17 +165,14 @@ const Wrapper = styled.section`
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				/* border: 2px solid var(--clr-primary-1); */
 
 				img {
 					border-radius: 0.4em;
-					/* transform: scale(1); */
 					width: 80px;
 					height: 60px;
-					/* object-fit: contain; */
 				}
 				img:hover {
-					opacity: 0.5;
+					opacity: 0.7;
 				}
 			}
 		}

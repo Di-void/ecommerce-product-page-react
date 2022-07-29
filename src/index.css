@@ -71,14 +71,6 @@ h4 {
 .section {
 	padding: 1rem;
 }
-
-.section-center {
-	/* width: 95vw; */
-	/* border: 1px solid black; */
-	/* margin: 0 auto; */
-	/* max-width: 1170px; */
-}
-
 /* 
 =========
 CART
@@ -100,5 +92,5 @@ CART
 }
 .divactive {
 	border: 3px solid var(--clr-primary-1);
-	opacity: 0.8;
+	opacity: 0.7;
 }

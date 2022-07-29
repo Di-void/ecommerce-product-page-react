@@ -18,6 +18,7 @@ const Sidebar = () => {
 						className="close-icon"
 						onClick={closeSidebar}
 						title="close sidebar"
+						type="button"
 					>
 						<FaTimes />
 					</button>

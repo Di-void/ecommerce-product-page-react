@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, useContext, useRef } from "react";
+import { useState, useEffect, useContext } from "react";
 import { products } from "./data";
 
 const AppContext = React.createContext();
@@ -9,6 +9,7 @@ const AppProvider = ({ children }) => {
 	// # STATE VALUES
 	const [items, setItems] = useState(products);
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+	const [isBigSliderOpen, setIsBigSliderOpen] = useState(false);
 	const [isCartOpen, setIsCartOpen] = useState(false);
 	const [cart, setCart] = useState([]);
 	const [totalPrice, setTotalPrice] = useState(0);
@@ -21,6 +22,12 @@ const AppProvider = ({ children }) => {
 	};
 	const closeSidebar = () => {
 		setIsSidebarOpen(false);
+	};
+	const openBackdrop = () => {
+		setIsBigSliderOpen(true);
+	};
+	const closeBackdrop = () => {
+		setIsBigSliderOpen(false);
 	};
 
 	const increaseItemAmount = () => {
@@ -49,6 +56,7 @@ const AppProvider = ({ children }) => {
 	};
 
 	useEffect(() => {
+		// eslint-disable-next-line
 		calculateTotal(amount);
 	}, [amount]);
 
@@ -87,6 +95,9 @@ const AppProvider = ({ children }) => {
 				isSidebarOpen,
 				openSidebar,
 				closeSidebar,
+				isBigSliderOpen,
+				openBackdrop,
+				closeBackdrop,
 				cart,
 				amount,
 				isCartOpen,

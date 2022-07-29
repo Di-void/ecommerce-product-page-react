@@ -5,7 +5,7 @@ import Slider from "./components/Slider";
 import Info from "./components/Info";
 import Sidebar from "./components/Sidebar";
 import Cart from "./components/Cart";
-import { useGlobalContext } from "./context";
+import BigSlider from "./components/BigSlider";
 
 // # MAIN COMP..
 const App = () => {
@@ -21,6 +21,7 @@ const App = () => {
 				<Info />
 			</Wrapper>
 			<Sidebar />
+			<BigSlider />
 		</main>
 	);
 };
