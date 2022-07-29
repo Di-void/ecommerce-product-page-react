@@ -56,8 +56,8 @@ const AppProvider = ({ children }) => {
 	};
 
 	useEffect(() => {
-		// eslint-disable-next-line
 		calculateTotal(amount);
+		// eslint-disable-next-line
 	}, [amount]);
 
 	const addToCart = (name, price) => {
