@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import { Images } from "./pics";
+import { Thumbs } from "./pics";
 
 // # MAIN COMP..
 const Slider = () => {
@@ -28,18 +29,42 @@ const Slider = () => {
 			return index;
 		});
 	};
+
+	const handleSwitch = ind => {
+		setIndex(ind);
+	};
+
 	// # RETs
 	return (
 		<Wrapper>
 			{/* LIST */}
-			{shoes.map((shoe, picIndex) => {
-				const { id, image, alt } = shoe;
-				return (
-					<div key={id}>
-						{index === picIndex && <img src={image} alt={alt} />}
-					</div>
-				);
-			})}
+			<div className="slider-container">
+				{shoes.map((shoe, picIndex) => {
+					const { id, image, alt } = shoe;
+					return (
+						<div key={id} className="slidepic-container">
+							{index === picIndex && <img src={image} alt={alt} />}
+						</div>
+					);
+				})}
+			</div>
+
+			<div className="thumbnail-container">
+				{/* LIST */}
+				{Thumbs.map((item, thumbIndex) => {
+					const { id, image, alt } = item;
+					return (
+						<div
+							key={id}
+							data-id={thumbIndex}
+							onClick={() => handleSwitch(thumbIndex)}
+							className={`${thumbIndex === index && "divactive"}`}
+						>
+							<img src={image} alt={alt} className="thumb-image" />
+						</div>
+					);
+				})}
+			</div>
 			<button className="prev-btn" onClick={prevSlide}>
 				<FiChevronLeft />
 			</button>
@@ -58,10 +83,15 @@ const Wrapper = styled.section`
 	/* width: 100vw; */
 	/* display: flex; */
 	/* border: 1px solid black; */
+
 	height: 350px;
 	/* overflow: hidden; */
 
-	div {
+	.slider-container {
+		width: 100%;
+		height: 100%;
+	}
+	.slidepic-container {
 		/* border: 1px solid black; */
 		width: 100%;
 		height: 100%;
@@ -72,6 +102,16 @@ const Wrapper = styled.section`
 			height: 100%;
 		}
 	}
+
+	.thumbnail-container {
+		display: none;
+	}
+	/* .thumb-image {
+		border: 2px solid var(--clr-primary-1);
+		border-radius: 0.4em;
+		width: 60px;
+		height: 60px;
+	} */
 
 	button {
 		background-color: var(--clr-primary-3);
@@ -101,6 +141,60 @@ const Wrapper = styled.section`
 		position: absolute;
 		top: 50%;
 		right: 1rem;
+	}
+	@media screen and (min-width: 700px) {
+		width: fit-content;
+		height: fit-content;
+		.slider-container {
+			width: 350px;
+			height: 350px;
+		}
+		.slidepic-container {
+			height: 80%;
+			/* padding: 0.2em; */
+			img {
+				border-radius: 0.5em;
+				object-fit: unset;
+			}
+		}
+		.thumbnail-container {
+			padding: 0.2rem 0;
+			/* border: 1px solid black; */
+			display: flex;
+			justify-content: space-between;
+
+			div {
+				width: 60px;
+				height: 60px;
+				cursor: pointer;
+				/* border: 1px solid black; */
+				border-radius: 0.5em;
+				overflow: hidden;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				/* border: 2px solid var(--clr-primary-1); */
+
+				img {
+					border-radius: 0.4em;
+					/* transform: scale(1); */
+					width: 80px;
+					height: 60px;
+					/* object-fit: contain; */
+				}
+				img:hover {
+					opacity: 0.5;
+				}
+			}
+		}
+		.prev-btn {
+			visibility: hidden;
+		}
+		.next-btn {
+			visibility: hidden;
+		}
+	}
+	@media screen and (min-width: 1170px) {
 	}
 `;
 export default Slider;

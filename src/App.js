@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import Navbar from "./components/Navbar";
 import Slider from "./components/Slider";
 import Info from "./components/Info";
@@ -15,11 +16,26 @@ const App = () => {
 		<main>
 			<Navbar />
 			<Cart />
-			<Slider />
-			<Info />
+			<Wrapper>
+				<Slider />
+				<Info />
+			</Wrapper>
 			<Sidebar />
 		</main>
 	);
 };
 
+const Wrapper = styled.div`
+	@media screen and (min-width: 700px) {
+		position: relative;
+		margin: 0 auto;
+		/* border: 1px solid black; */
+		width: fit-content;
+		padding: 0.75rem;
+		margin-top: 40px;
+		display: grid;
+		grid-column-gap: 1em;
+		grid-template-columns: 1fr 1fr;
+	}
+`;
 export default App;

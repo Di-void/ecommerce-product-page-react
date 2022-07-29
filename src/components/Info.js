@@ -65,27 +65,29 @@ const Buttons = ({
 				<p>${originalPrice.toFixed(2)}</p>
 			</header>
 
-			<div className="btns">
-				<button onClick={decreaseItemAmount}>
-					<ImMinus />
-				</button>
+			<div className="buttons-container">
+				<div className="btns">
+					<button onClick={decreaseItemAmount}>
+						<ImMinus />
+					</button>
 
-				<span>{amount}</span>
+					<span>{amount}</span>
 
-				<button onClick={increaseItemAmount}>
-					<BiPlusMedical />
+					<button onClick={increaseItemAmount}>
+						<BiPlusMedical />
+					</button>
+				</div>
+
+				<button
+					className="add-to-cart"
+					onClick={() => {
+						addToCart(name, price);
+					}}
+				>
+					<BsCart />
+					<span>Add to cart</span>
 				</button>
 			</div>
-
-			<button
-				className="add-to-cart"
-				onClick={() => {
-					addToCart(name, price);
-				}}
-			>
-				<BsCart />
-				<span>Add to cart</span>
-			</button>
 		</ButtonsWrapper>
 	);
 };
@@ -93,6 +95,7 @@ const Buttons = ({
 // # STYLED COMPONENTS
 
 const Wrapper = styled.article`
+	/* border: 1px solid black; */
 	div {
 		.title {
 			font-size: 0.9rem;
@@ -112,10 +115,33 @@ const Wrapper = styled.article`
 			color: var(--clr-neutral-3);
 		}
 	}
+	@media screen and (min-width: 700px) {
+		/* width: fit-content; */
+		max-width: 400px;
+		height: fit-content;
+		margin-top: 1px;
+		transform: scale(0.9);
+
+		div {
+			.title {
+				font-size: 0.8rem;
+			}
+			.prod-title {
+				font-size: 2rem;
+				margin-top: 10px;
+			}
+			.prod-info {
+				margin-top: 19px;
+				font-size: 1rem;
+			}
+		}
+		/* transform: scale(0.8); */
+	}
+	@media screen and (min-width: 1130px) {
+	}
 `;
 
 const ButtonsWrapper = styled.div`
-	/* border: 1px solid black; */
 	padding: 1rem 0;
 
 	.price-section {
@@ -152,7 +178,7 @@ const ButtonsWrapper = styled.div`
 			margin-top: 0;
 			font-weight: 700;
 			text-decoration: line-through;
-			vertical-align: baseline;
+			/* vertical-align: baseline; */
 		}
 	}
 
@@ -202,6 +228,48 @@ const ButtonsWrapper = styled.div`
 
 	.add-to-cart:hover {
 		background-color: hsl(26, 99%, 63%);
+	}
+
+	@media screen and (min-width: 800px) {
+		.price-section {
+			display: block;
+			div {
+				width: fit-content;
+				/* border: 1px solid black; */
+
+				.discount {
+					margin-left: 10px;
+				}
+			}
+			p {
+				margin-top: 5px;
+				position: unset;
+			}
+		}
+
+		.buttons-container {
+			margin-top: 20px;
+			display: flex;
+			justify-content: space-between;
+			height: fit-content;
+			width: 90%;
+			/* border: 1px solid black; */
+
+			.btns {
+				margin-top: 0;
+				margin-bottom: 0;
+				margin-right: 5px;
+				/* border: 1px solid black; */
+				width: 40%;
+			}
+
+			.add-to-cart {
+				margin-top: 0;
+				margin-bottom: 0;
+				width: 60%;
+				height: fit-content;
+			}
+		}
 	}
 `;
 export default Info;

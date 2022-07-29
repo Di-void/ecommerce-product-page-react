@@ -76,15 +76,16 @@ const Wrapper = styled.article`
 	border-radius: 0.5em;
 	/* width: 100vw; */
 	width: 100%;
-	max-width: 420px;
+	max-width: 400px;
 	height: fit-content;
 	position: absolute;
 	right: 0;
 	z-index: 3;
 	padding: 0.5rem;
-	transition: var(--transition);
+	transition: opacity 0.2s linear;
 	/* background-color: white; */
 	.section-center-first-copy {
+		box-shadow: 7px 10px 100px 5px rgba(0, 0, 0, 0.1);
 		background-color: var(--clr-primary-3);
 		width: 100%;
 		min-height: fit-content;
@@ -104,13 +105,13 @@ const Wrapper = styled.article`
 			text-align: center;
 			position: absolute;
 			top: 40%;
-			right: 28%;
+			right: 30%;
 			color: var(--clr-neutral-3);
 			font-size: 1.1rem;
 		}
 	}
 	.section-center {
-		/* box-shadow: 7px 10px 100px 5px rgba(0, 0, 0, 0.1); */
+		box-shadow: 7px 10px 100px 5px rgba(0, 0, 0, 0.1);
 		background-color: var(--clr-primary-3);
 		width: 100%;
 		min-height: fit-content;

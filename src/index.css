@@ -98,3 +98,7 @@ CART
 	cursor: pointer;
 	transition: all 0.2s linear;
 }
+.divactive {
+	border: 3px solid var(--clr-primary-1);
+	opacity: 0.8;
+}

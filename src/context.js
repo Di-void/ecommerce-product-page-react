@@ -63,7 +63,10 @@ const AppProvider = ({ children }) => {
 			};
 			let isInCart = cart.find(cartItem => cartItem.id === newCartItem.id);
 			if (!isInCart) {
-				cart.push(newCartItem);
+				setCart(oldCart => {
+					let newCart = [...oldCart, newCartItem];
+					return newCart;
+				});
 			}
 			setIsCartOpen(true);
 		}
@@ -71,6 +74,7 @@ const AppProvider = ({ children }) => {
 
 	const deleteItemFromCart = () => {
 		setCart([]);
+		// hardcoded this portion cause there is only one item in the cart
 		setAmount(0);
 	};
 	const toggleCart = () => {
