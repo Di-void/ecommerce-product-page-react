@@ -26,6 +26,7 @@ const Sidebar = () => {
 						{links.map(link => {
 							return (
 								<li key={link.id} className="sidebar-link">
+									{/* eslint-disable-next-line */}
 									<a href="#">{link.link}</a>
 								</li>
 							);

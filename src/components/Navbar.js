@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 import { BsCart } from "react-icons/bs";
 import userImage from "../images/image-avatar.png";
 import Logo from "../images/logo.svg";
@@ -23,18 +23,23 @@ const Navbar = () => {
 				<div className="links-container">
 					<ul className="nav-links">
 						<li>
+							{/* eslint-disable-next-line */}
 							<a href="#">Collections</a>
 						</li>
 						<li>
+							{/* eslint-disable-next-line */}
 							<a href="#">Men</a>
 						</li>
 						<li>
+							{/* eslint-disable-next-line */}
 							<a href="#">Women</a>
 						</li>
 						<li>
+							{/* eslint-disable-next-line */}
 							<a href="#">About</a>
 						</li>
 						<li>
+							{/* eslint-disable-next-line */}
 							<a href="#">Contact</a>
 						</li>
 					</ul>
@@ -189,7 +194,6 @@ const Wrapper = styled.nav`
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-				/* border: 1px solid black; */
 			}
 		}
 	}

@@ -7,6 +7,7 @@ const AppContext = React.createContext();
 // # MAIN COMP..
 const AppProvider = ({ children }) => {
 	// # STATE VALUES
+	// eslint-disable-next-line
 	const [items, setItems] = useState(products);
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 	const [isBigSliderOpen, setIsBigSliderOpen] = useState(false);
@@ -14,6 +15,7 @@ const AppProvider = ({ children }) => {
 	const [cart, setCart] = useState([]);
 	const [totalPrice, setTotalPrice] = useState(0);
 	const { inStock } = items[0];
+	// eslint-disable-next-line
 	const [itemPrice, setItemPrice] = useState(products[0].discountedPrice);
 	const [amount, setAmount] = useState(0);
 	// # FUNCTIONS AND SIDE EFFECTS

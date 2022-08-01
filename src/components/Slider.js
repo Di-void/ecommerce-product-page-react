@@ -9,6 +9,7 @@ import { useGlobalContext } from "../context";
 // # MAIN COMP..
 const Slider = () => {
 	// # STATE VALUES
+	// eslint-disable-next-line
 	const [shoes, setShoes] = useState(Images);
 	const [index, setIndex] = useState(0);
 	const { openBackdrop } = useGlobalContext();
