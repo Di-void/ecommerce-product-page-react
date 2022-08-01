@@ -34,9 +34,9 @@ Users should be able to:
 
 ### Links
 
--  Solution URL: [Add solution URL here](https://github.com/Multimarix/ecommerce-product-page-react)
+-  Solution URL: [My solution](https://github.com/Multimarix/ecommerce-product-page-react)
 
--  Live Site URL: [Add live site URL here](https://ecomm-product-page-react.netlify.app/)
+-  Live Site URL: [Ecommerce Product Page](https://ecomm-product-page-react.netlify.app/)
 
 ## My process
 
